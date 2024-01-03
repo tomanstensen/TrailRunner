@@ -18,7 +18,7 @@ Krav - Skapa användare med längd och vikt
     Refaktorerat implementeringen genom att sätta height och weight i konstruktorn. Testet är fortfarande grönt.
 
 
-Krav - Beräkna användarens buildNumber
+Krav - Beräkna användarens BMI
 
 löprundor
 ------------------
