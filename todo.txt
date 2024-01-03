@@ -1,0 +1,22 @@
+Lägg till dependencies i pom
+    Lagt till dependency för jacoco
+    Lagt till dependency för mockito
+    Lagt till dependency för JUnit
+    Lagt till jacoco build
+
+användare
+-------------------
+Krav - Skapa användare med längd och vikt
+Krav - Beräkna användarens buildNumber
+
+löprundor
+------------------
+Krav - Skall kunna skapa löprunda med distans (km), tid (timmar, minuter, sekunder), datum, år/månad/dag
+Krav - Varje löprunda skall ha ett unikt id-nummer (string)
+Krav - Varje löprunda skall automatiskt beräkna medelhastighet
+Krav - Varje löprunda skall automatiskt beräkna kilometer-tid
+Krav - Det skall gå att beräkna total distans för samtliga löprundor
+Krav - Det skall gå att beräkna medeldistans för samtliga löprundor
+Krav - Det skall gå att printa ut detaljerna för en löprunda genom att ange korrekt id-nummer
+Krav - Det skall gå att radera en löprunda genom att ange dess identifikationsnummer.
+Krav - Löprundorna kan sparas lokalt i arbetsminnet, i t.ex. en Array eller en Collection
