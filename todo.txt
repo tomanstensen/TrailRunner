@@ -26,8 +26,12 @@ Krav - Beräkna användarens BMI
     Lade till en return på hårdkodad rätt uträkning för BMI. Green test.
     Lägger till formel för beräkning av BMI i metod. Behäver casta om height till en double. Red test
     Castat om height till en double från int. Green test
-    
 
+2024-01-03:
+    JaCoCo har 100% täckning på den nya koden.
+
+Extra krav/idéer:
+    Gör variabler private
 
 löprundor
 ------------------
