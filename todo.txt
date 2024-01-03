@@ -6,7 +6,18 @@ Lägg till dependencies i pom
 
 användare
 -------------------
+2024-01-03:
+Skapat fil för test för användare
+
 Krav - Skapa användare med längd och vikt
+    2024-01-03:
+    Skapat test för att skapa användare med längd och vikt. Testet kompilerar inte eftersom användarklassen inte är skapad.
+    Skapat användarklass med en konstruktor som tar emot längd och vikt men som har en tom implementering. 
+    Lagt till klassvariabler för längd och vikt utan värde. Testet failar eftersom längd och vikt inte har rätt värden.
+    Satt längd och vikt till hårdkodade värden som överensstämmer med testet. Testet är grönt.
+    Refaktorerat implementeringen genom att sätta height och weight i konstruktorn. Testet är fortfarande grönt.
+
+
 Krav - Beräkna användarens buildNumber
 
 löprundor
