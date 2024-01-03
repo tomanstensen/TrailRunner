@@ -11,4 +11,10 @@ public class UserTest {
         assertEquals(175, user.height);
         assertEquals(85, user.weight);
     }
+
+    @Test
+    public void computeBodyMassIndex(){
+        User user = new User(175, 85);
+        assertEquals(27.8, user.calculateBMI(), 0.1);
+    }
 }

@@ -19,6 +19,15 @@ Krav - Skapa användare med längd och vikt
 
 
 Krav - Beräkna användarens BMI
+    2024-01-03:
+    Skapat test för beräkning av BMI. Metod finns inte så filen kompileras inte.
+    Skapat tom metod för beräkning av BMI. Red test.
+    Insåg att metoden behöver returnera en double.
+    Lade till en return på hårdkodad rätt uträkning för BMI. Green test.
+    Lägger till formel för beräkning av BMI i metod. Behäver casta om height till en double. Red test
+    Castat om height till en double från int. Green test
+    
+
 
 löprundor
 ------------------
