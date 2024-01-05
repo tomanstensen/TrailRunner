@@ -110,11 +110,54 @@ Krav - Varje löprunda skall automatiskt beräkna kilometer-tid
     Byter ut det jämförda värdet i våran assertion mot det sparade värdet konverterat till minuter. Testet är grönt
     Ändrar metodens return till svaret på uträkningen i sekunder. Testet är grönt.
     Byter namn på metoden till calculatePace. 
+    
+    Att göra:
+    Lägg till metod för att hämta minuter/kilometer som string.
 
 
 
 Krav - Det skall gå att beräkna total distans för samtliga löprundor
+
+
 Krav - Det skall gå att beräkna medeldistans för samtliga löprundor
+
 Krav - Det skall gå att printa ut detaljerna för en löprunda genom att ange korrekt id-nummer
+
 Krav - Det skall gå att radera en löprunda genom att ange dess identifikationsnummer.
-Krav - Löprundorna kan sparas lokalt i arbetsminnet, i t.ex. en Array eller en Collection
+
+Krav - Löprundorna kan sparas lokalt i arbetsminnet, i t.ex. en Array eller en Collection (Map)
+    Test
+    Skapar ett test som skapar en ActivityManager som skall innehålla en map.
+    Testet kontrollerar att storleken på mapen är 0.
+    Testet kompilerar inte eftersom klassen ActivityManager inte finns ännu.
+    
+    Skapar klassen ActivityManager. Testet kompilerar fortfarande inte eftersom variabeln activities inte finns.
+    Lägger till en variabel av typen Map<String, Activities> i ActivityManager. Testet failar eftersom variabeln är null.
+    Initialiserar activities-mapen till en ny HashMap. Testet är grönt.
+
+    Refaktorering
+    Flyttar initialiseringen av activities-mapen till en konstruktor för ActivityManager. Testet är fortfarande grönt.
+
+    Att göra:
+    Skriva test för att lägga till activity i mapen.
+        Skapar ett test för att lägga till activity i activities-mapen. Testet skapar en ActivityManager och en Activity och försöker
+        lägga till aktiviteten i mapen. Testet kontrollerar att storleken på mapen är 1 efter att aktiviteten lagts till.
+        Testet failar.
+        Skapar metoden addActivity som tar in en Activity som parameter. Metoden anropar put() på activities-mapen.
+        Testet är grönt.
+        
+
+    Skriva test för att hämta activity från map genom id-sträng
+        Skapar ett test för att hämta Activity från activities-mapen i ActivityManager. 
+        Testet kontrollerar att aktiviteten som hämtas är samma som lagts till genom att jämföra värden på variablerna.
+        Testet failar eftersom det inte kompilerar då metoden för att hämta aktivitet inte finns.
+        Inser att vi antagligen vill lägga till id som en parameter i konstruktorn på Activity och flytta id-hanteringen till 
+        ActivityManager. Vi kanske också vill ha ett test som jämför två aktiviteter och ser om de är lika utifrån innehållet.
+        Skapat metod för att hämta aktivitet. Metoden tar en sträng som parameter för aktivitetens id och anropar get() på 
+        activities-mapen. Metoden returnerar en Activity. Testet är grönt.
+
+    Lägg till id i konstruktor för Activity
+    Flytta id-hantering till ActivityManager
+
+
+
