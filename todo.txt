@@ -32,12 +32,61 @@ Krav - Beräkna användarens BMI
 
 Extra krav/idéer:
     Gör variabler private
+    Testa att vikten är giltig (kan inte vara 0 eller mindre)
+    Testa att längden är giltig (kan inte vara 0 eller mindre)
 
 löprundor
 ------------------
 Krav - Skall kunna skapa löprunda med distans (km), tid (timmar, minuter, sekunder), datum, år/månad/dag
+    Test
+    Skapat ny fil för löprundor (ActivityTest.java)
+    Skapat test för att skapa löprunda med ovanstående parametrar
+    Beslutar att lagra tid i sekunder
+    Undersöker hur vi skall lagra datum (Date-klass, Calendar, osv.) för att kunna jämföra
+    Beslutar att använda GregorianCalendar eftersom den ersatt konstruktorn för Date för år/månad/dag (Deprecated)
+    Skriver assertions för distans, tid och datum
+    Testet kompilerar inte eftersom Activity-klassen inte existerar. (Rött test)
+
+    Code under test
+    Skapar ny Activity-klass
+    Lägger in variabler för distance (double), time (int) och date (Date).
+    Skapar en tom konstruktor för Activity med parametrar som motsvarar ovanstående fält.
+    Inser att GregorianCalendar inte kan konverteras direkt till Date. Ändrar från Date till Calendar.
+    Kör testet igen, testet kompilerar men failar eftersom fälten inte har några värden.
+    Lägger in fasta värden på fälten som motsvarar testdatan. Kör testet igen, testet är grönt.
+
+    Refaktorering
+    Skriver om konstruktorn så att den sätter variablerna till värdet på parametrarna.
+    Kör testet igen, fortfarande grönt.
+    Inser att det kanske finns en klass för att representera tid bättre än int, letar runt och hittar Duration som verkar motsvara kraven.
+    Ändrar time-variabeln till Duration. Testet failar eftersom klassen inte kompilerar längre.
+    Ändrar i konstruktorn till att skapa ett nytt Duration-objekt genom ofSeconds-metoden. Testet failar eftersom testet förväntar sig en integer.
+    Ändrar i testet så att det jämför mot time.getSeconds. Testet är grönt.
+
+    Extra:
+    Skapa fler konstruktorer som kan hantera att man lägger in timmar/minuter/sekunder för tid
+    Skapar ett nytt test för att skapa aktivitet med timmar/minuter/sekunder för tiden. Testet kompilerar inte eftersom konstruktorn inte finns.
+    Skapar ny konstruktor för Activity med tre int-parametrar som representerar tid (hours, minutes, seconds). Sätter time till ett nytt Duration-objekt med
+    den hårdkodade tiden i sekunder från testdatan. Testet blir grönt.
+    Ändrar konstruktorn så att den använder en tempTime-variabel av typen Duration som skapas från hours-parametern (Duration.ofHours).
+    Använder sedan tempTime.plusMinutes och plusSeconds för att lägga till minuter och sekunder från parametrarna till tempTime. Testet är fortfarande grönt.
+
+
 Krav - Varje löprunda skall ha ett unikt id-nummer (string)
+    Skapar test för att tilldela Id. 
+    Då det inte finns en Id så kompileras inte testet.
+    Skapar en String variabel för Id (röd test) och sätter den till ett fast värde (grönt test). 
+    Skapar en statisk variabel för att räkna upp Id. 
+    En ny aktivitet tilldelas ett värde som sedan räknas upp och nästa aktivitet får följande nummer.
+    Vi skapar en till activity i vårat test för att säkerställa att följande aktiviteter får unika Id. Testet är grönt.
+
+
 Krav - Varje löprunda skall automatiskt beräkna medelhastighet
+    Skapar test för att beräkna medelhastighet. 
+    Inser att det hade underlättat att arbeta i timmar/minuter/sekunder, går tillbaka till konstruktorn för aktivitet för att kunna skapa
+    aktiveter med timmar, minuter och sekunder.
+
+
 Krav - Varje löprunda skall automatiskt beräkna kilometer-tid
 Krav - Det skall gå att beräkna total distans för samtliga löprundor
 Krav - Det skall gå att beräkna medeldistans för samtliga löprundor
