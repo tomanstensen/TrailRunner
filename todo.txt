@@ -117,13 +117,40 @@ Krav - Varje löprunda skall automatiskt beräkna kilometer-tid
 
 
 Krav - Det skall gå att beräkna total distans för samtliga löprundor
+    Skapar ett test för att beräkna totala distansen för två löprundor (1 och 4 km).
+    Förväntar sig att metoden returnerar 5.0.
+    Testet failar eftersom metoden inte finns (kompilerar inte).
 
+    Skapar en metod i ActivityManager för att beräkna den totala distansen.
+    Metoden returnerar statiskt 5.0, testet är grönt.
+
+    Refaktorering:
+    Skriver om metoden så att den loopar igenom aktiviteterna och beräknar summan av distansen. Testet är fortfarande grönt.
 
 Krav - Det skall gå att beräkna medeldistans för samtliga löprundor
+    Skapat ett test för att kontrollera medeldistansen för samtliga löprundor.
+    Testet skapar två aktiviteter med distans 1 och 4 km och kontrollerar att medeldistansen som returneras från averageDistance är
+    2.5.
+    Testet failar eftersom det inte kompilerar då metoden inte finns.
+    Skapar metoden averageDistance som returnerar 0, testet failar eftersom det förväntar sig 2.5.
+    Ändrar return-statement till att returnera 2.5, testet är grönt.
+
+    Refaktorering
+    Ändrar metoden så att den hämtar totala distansen via totalDistance-metoden och dividerar det med storleken på activities-mapen.
+    Testet är fortfarande grönt.
 
 Krav - Det skall gå att printa ut detaljerna för en löprunda genom att ange korrekt id-nummer
+    Skapar test för att kontrollera att toString på activity skriver ut rätt detaljer. Testet failar eftersom toString inte har overridats.
+    Testet delar upp strängen från toString på newline till en array.
+    Testet jämför varje rad med förväntad data, testet failar eftersom formateringen inte stämmer överens.
+    Ändrar formateringen för att matcha mellan test och implementering, testet är grönt.
 
 Krav - Det skall gå att radera en löprunda genom att ange dess identifikationsnummer.
+    Skapar test för att ta bort löprunda. Testet lägger först till två aktiviteter, tar bort den ena och kontrollerar att storleken är 1.
+    Testet kompilerar inte och failar eftersom metoden inte skapats.
+    Skapar metod i ActivityManager för att ta bort Activity-objekt från mapen.
+    Testet är grönt.
+
 
 Krav - Löprundorna kan sparas lokalt i arbetsminnet, i t.ex. en Array eller en Collection (Map)
     Test

@@ -18,4 +18,20 @@ public class ActivityManager {
         return activities.get(id);
     }
     
+    public double totalDistance() {
+        double totalDistance = 0;
+        for(Activity activity : activities.values() ){
+            totalDistance += activity.distance;
+        }
+        return totalDistance;
+    }
+
+    public double averageDistance() {
+        int totalActivities = activities.size();
+        return totalDistance() / totalActivities;
+    }
+
+    public void removeActivity(String id) {
+        activities.remove(id);
+    }
 }

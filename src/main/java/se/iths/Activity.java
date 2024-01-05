@@ -3,6 +3,7 @@ package se.iths;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 public class Activity {
     public static long idCounter = 1;
@@ -35,5 +36,18 @@ public class Activity {
     public Duration calculatePace() {
         double seconds = time.getSeconds() / distance;
         return Duration.ofSeconds((long) seconds);
+    }
+
+    @Override
+    public String toString() {
+        
+        String returnString = "";
+        returnString += "Distance: " + distance + "km\n";
+        returnString += "Duration: " + time.toHoursPart() + " hour, " + time.toMinutesPart() + " minutes, " + time.toSecondsPart() + " seconds.\n";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        returnString += "Date: " + sdf.format(date.getTime()) + "\n";
+        returnString += "Average speed: " + averageSpeed() + "km/h\n";
+        returnString += "Pace: " + calculatePace().toMinutes() + ":" + calculatePace().toSecondsPart() + "min/km";
+        return returnString;
     }
 }

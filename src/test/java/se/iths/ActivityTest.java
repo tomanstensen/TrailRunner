@@ -50,4 +50,15 @@ public class ActivityTest {
 
         assertEquals(318, activity2.calculatePace().getSeconds());
     }
+
+    @Test
+    public void canGetDetailsFromToString() {
+        Activity activity = new Activity(1, 1, 0, 0, new GregorianCalendar(2024, 0, 1));
+        String[] actualStrings = activity.toString().split("\n");
+        assertEquals("Distance: 1.0km", actualStrings[0]);
+        assertEquals("Duration: 1 hour, 0 minutes, 0 seconds.", actualStrings[1]);
+        assertEquals("Date: 2024-01-01", actualStrings[2]);
+        assertEquals("Average speed: 1.0km/h", actualStrings[3]);
+        assertEquals("Pace: 60:0min/km", actualStrings[4]);
+    }
 }
