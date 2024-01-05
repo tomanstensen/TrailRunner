@@ -31,4 +31,9 @@ public class Activity {
     public double averageSpeed() {
         return distance/(time.toHours());
     }
+
+    public Duration calculatePace() {
+        double seconds = time.getSeconds() / distance;
+        return Duration.ofSeconds((long) seconds);
+    }
 }

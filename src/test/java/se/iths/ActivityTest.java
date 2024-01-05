@@ -39,4 +39,15 @@ public class ActivityTest {
 
         assertEquals(1, activity.averageSpeed());
     }
+
+    @Test
+    public void canCalculatePace() {
+        Activity activity = new Activity(1, 1, 0, 0, new GregorianCalendar(2024, 1, 1));  
+
+        assertEquals(60, activity.calculatePace().toMinutes());
+
+        Activity activity2 = new Activity(5, 0, 26, 30, new GregorianCalendar(2024, 1, 1));  
+
+        assertEquals(318, activity2.calculatePace().getSeconds());
+    }
 }

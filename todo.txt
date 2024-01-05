@@ -95,13 +95,23 @@ Krav - Varje löprunda skall automatiskt beräkna medelhastighet
     Ändrar metoden som beräknar medelhastighet så att den räknar ut medelhastigheten från tiden och distansen av aktiviteten. Testet är fortfarande grönt.
     Ändrar från att använda getSeconds()/3600 till toHours(). Testet är fortfarande grönt.
 
+Extra/idéer:
+Lägg till konstruktor som kan ta emot Duration-objekt.
+
 
 Krav - Varje löprunda skall automatiskt beräkna kilometer-tid
     Test
-    Skapar ett test för att beräkna kilometer-tid. 
+    Skapar ett test för att beräkna kilometer-tid. Testet kompilerar inte eftersom metoden inte finns.
+    Skapar metod som returnerar ett duration-objekt som representerar kilometertiden. Metoden returnerar ett duration objekt som motsvarar testdatan. Testet är grönt.
+    
 
     Refaktorering
-    
+    Byter ut värdet i metoden mot en uträkning för tid i minuter delad på distansen. 
+    Byter ut det jämförda värdet i våran assertion mot det sparade värdet konverterat till minuter. Testet är grönt
+    Ändrar metodens return till svaret på uträkningen i sekunder. Testet är grönt.
+    Byter namn på metoden till calculatePace. 
+
+
 
 Krav - Det skall gå att beräkna total distans för samtliga löprundor
 Krav - Det skall gå att beräkna medeldistans för samtliga löprundor
