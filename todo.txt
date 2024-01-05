@@ -70,6 +70,7 @@ Krav - Skall kunna skapa löprunda med distans (km), tid (timmar, minuter, sekun
     den hårdkodade tiden i sekunder från testdatan. Testet blir grönt.
     Ändrar konstruktorn så att den använder en tempTime-variabel av typen Duration som skapas från hours-parametern (Duration.ofHours).
     Använder sedan tempTime.plusMinutes och plusSeconds för att lägga till minuter och sekunder från parametrarna till tempTime. Testet är fortfarande grönt.
+    Går tillbaka till att beräkna medelhastighet nu när det finns en konstruktor som hanterar timmar/minuter/sekunder.
 
 
 Krav - Varje löprunda skall ha ett unikt id-nummer (string)
@@ -85,9 +86,23 @@ Krav - Varje löprunda skall automatiskt beräkna medelhastighet
     Skapar test för att beräkna medelhastighet. 
     Inser att det hade underlättat att arbeta i timmar/minuter/sekunder, går tillbaka till konstruktorn för aktivitet för att kunna skapa
     aktiveter med timmar, minuter och sekunder.
+    Testet kompilerar inte eftersom metoden för att hämta medelhastighet inte finns. Testet är rött.
+    Skapar en metod i Activity som returnerar medelhastigheten som en double.
+    Testet kompilerar inte eftersom metoden är tom.
+    Lägger till ett return-statement som returnerar 1 (samma som testdatan), testet är grönt.
+    
+    Refaktorering
+    Ändrar metoden som beräknar medelhastighet så att den räknar ut medelhastigheten från tiden och distansen av aktiviteten. Testet är fortfarande grönt.
+    Ändrar från att använda getSeconds()/3600 till toHours(). Testet är fortfarande grönt.
 
 
 Krav - Varje löprunda skall automatiskt beräkna kilometer-tid
+    Test
+    Skapar ett test för att beräkna kilometer-tid. 
+
+    Refaktorering
+    
+
 Krav - Det skall gå att beräkna total distans för samtliga löprundor
 Krav - Det skall gå att beräkna medeldistans för samtliga löprundor
 Krav - Det skall gå att printa ut detaljerna för en löprunda genom att ange korrekt id-nummer

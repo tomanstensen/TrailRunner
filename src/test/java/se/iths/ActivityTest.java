@@ -32,4 +32,11 @@ public class ActivityTest {
 
         assertEquals(3723, activity.time.getSeconds());
     }
+
+    @Test
+    public void calculateAverageSpeed() {
+        Activity activity = new Activity(1, 1, 0, 0, new GregorianCalendar(2024, 1, 1));  
+
+        assertEquals(1, activity.averageSpeed());
+    }
 }

@@ -1,6 +1,7 @@
 package se.iths;
 
 import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 
 public class Activity {
@@ -25,5 +26,9 @@ public class Activity {
         this.time = tempTime;
         this.date = date; 
         this.id = Long.toString(idCounter++);
+    }
+
+    public double averageSpeed() {
+        return distance/(time.toHours());
     }
 }
