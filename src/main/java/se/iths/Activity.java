@@ -6,27 +6,26 @@ import java.util.Calendar;
 import java.text.SimpleDateFormat;
 
 public class Activity {
-    public static long idCounter = 1;
     double distance;
     Duration time;
     Calendar date;
     String id;
 
-    public Activity(double distance, int time, Calendar date){
+    public Activity(String id, double distance, int seconds, Calendar date) {
+        this.id = id;
         this.distance = distance;
-        this.time = Duration.ofSeconds(time);
-        this.date = date; 
-        this.id = Long.toString(idCounter++);
+        this.time = Duration.ofSeconds(seconds);
+        this.date = date;
     }
 
-    public Activity(double distance, int hours, int minutes, int seconds, Calendar date){
+    public Activity(String id, double distance, int hours, int minutes, int seconds, Calendar date){
         Duration tempTime = Duration.ofHours(hours);
         tempTime = tempTime.plusMinutes(minutes);
         tempTime = tempTime.plusSeconds(seconds);
         this.distance = distance;
         this.time = tempTime;
         this.date = date; 
-        this.id = Long.toString(idCounter++);
+        this.id = id;
     }
 
     public double averageSpeed() {

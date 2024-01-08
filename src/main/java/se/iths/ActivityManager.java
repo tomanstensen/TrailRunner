@@ -4,14 +4,17 @@ import java.util.HashMap;
 
 public class ActivityManager {
     Map<String, Activity> activities;
+    public long idCounter = 1;
 
     public ActivityManager() {
         activities = new HashMap<>();
     }
 
     public void addActivity(Activity activity) {
+        if (activities.containsKey(activity.id)) {
+            throw new IllegalArgumentException("ID already excist");
+        }
         activities.put(activity.id, activity);
-        
     }
 
     public Activity getActivity(String id) {
@@ -33,5 +36,9 @@ public class ActivityManager {
 
     public void removeActivity(String id) {
         activities.remove(id);
+    }
+
+    public String getNextActivityId() {
+        return Long.toString(idCounter++);
     }
 }

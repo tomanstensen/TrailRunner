@@ -30,11 +30,6 @@ Krav - Beräkna användarens BMI
 2024-01-03:
     JaCoCo har 100% täckning på den nya koden.
 
-Extra krav/idéer:
-    Gör variabler private
-    Testa att vikten är giltig (kan inte vara 0 eller mindre)
-    Testa att längden är giltig (kan inte vara 0 eller mindre)
-
 löprundor
 ------------------
 Krav - Skall kunna skapa löprunda med distans (km), tid (timmar, minuter, sekunder), datum, år/månad/dag
@@ -111,9 +106,6 @@ Krav - Varje löprunda skall automatiskt beräkna kilometer-tid
     Ändrar metodens return till svaret på uträkningen i sekunder. Testet är grönt.
     Byter namn på metoden till calculatePace. 
     
-    Att göra:
-    Lägg till metod för att hämta minuter/kilometer som string.
-
 
 
 Krav - Det skall gå att beräkna total distans för samtliga löprundor
@@ -172,7 +164,6 @@ Krav - Löprundorna kan sparas lokalt i arbetsminnet, i t.ex. en Array eller en 
         Testet failar.
         Skapar metoden addActivity som tar in en Activity som parameter. Metoden anropar put() på activities-mapen.
         Testet är grönt.
-        
 
     Skriva test för att hämta activity från map genom id-sträng
         Skapar ett test för att hämta Activity från activities-mapen i ActivityManager. 
@@ -184,7 +175,43 @@ Krav - Löprundorna kan sparas lokalt i arbetsminnet, i t.ex. en Array eller en 
         activities-mapen. Metoden returnerar en Activity. Testet är grönt.
 
     Lägg till id i konstruktor för Activity
+        Test
+        Skapar test för att skapa aktivitet med manuellt angivet id.
+        Testet kompilerar inte eftersom det inte finns någon konstruktor som tar in id som parameter.
+        Skriver en konstruktor som tar in id som parameter, testet är grönt.
+
     Flytta id-hantering till ActivityManager
+        Börjar med att kopiera statiska id-variabeln till ActivityManager.
+        Skapar test för att hämta nästa id från ActivityManager. Förväntar sig ett id på "1".
+        Testet kompilerar inte eftersom metoden för att hämta id inte finns.
+        Implementerar en metod för att hämta nästa id som returnerar "1". Testet blir grönt.
+        Lägger till en assertion för att id skall inkrementeras. Testet blir rött.
+        Ändrar metoden till att returnera idCounter++ som sträng, testet blir grönt.
+
+        Lägger till en assert i testet för att skapa en aktivitet med id för en aktivitet med konstruktorn som hanterar timmar, minuter och sekunder men som också tar in id.
+        Testet kompilerar inte längre eftersom den konstruktorn inte finns.
+        Lägger till en konstruktor som hanterar id, timmar, minuter och sekunder.
+        Tar bort konstruktorer som inte har id, test failar nu i ActivityTest-filen.
+        Ändrar i ActivityTest så att samtliga test skapar aktiviteter med id. Testen blir gröna.
+        Tar bort idCounter från Activity, testen är fortfarande gröna.
+        Testen i ActivityManagerTest är nu röda eftersom den inte skapar aktiviteter med id.
+        Ändrar i testen i ActivityManagerTest så att de använder konstruktorer med id, testen är nu gröna.
+
+        Skapar ett test för att skapa aktiviteter med autogenererat id från ActivityManager.
+        Testet kontrollerar att två aktiviteter som hämtar id från getNextActivityId får rätt id.
+
+    Skriva test för att kontrollera att det inte går att lägga till aktiviteter med samma id
+        Skapar ett test som kontrollerar att addActivity kastar ett illegalargumentexception när man lägger till två aktiviteter med samma id.
+        Testet failar eftersom metoden addActivity inte kastar ett exception när två aktiviteter med samma id läggs till.
+        Skriver implementation i addActivity som kollar om Mapen innehåller id som key, kastar i så fall ett IllegalArgumentException. Testet är grönt.
+
+    Skriva test för att kunna ändra vikt och längd
+        Lägger till ett test i UserTest för att ändra vikt och längd, testet blir grönt direkt då variablerna är publika.
+
+    När vi kör samtliga test i ActivityManagerTest failar ett av testen (testet som kollar getNextActivityId). Inser att vi inte längre behöver ha en statisk id-counter
+    och att den ställer till det med testen när man kör alla test.
+    Tar bort static från idCounter, testen är gröna.
+
 
 
 
