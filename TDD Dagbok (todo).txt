@@ -213,5 +213,54 @@ Krav - Löprundorna kan sparas lokalt i arbetsminnet, i t.ex. en Array eller en 
     Tar bort static från idCounter, testen är gröna.
 
 
+10-01-24
+Börjar titta på VG delen av uppgiften.
+
+Databasen kommer ha följande API:
+
+void createRecord(String id, double distance, int time_seconds, LocalDate date) throws SQLException
+    Skapar ett nytt record i databasen. Kastar ett SQLException (“Error: Duplicate ID”) om id redan existerar i databasen.
+
+Record readRecord(String id) throws SQLException
+    Läser av och returnerar ett record från databasen. Kastar ett SQLException (”Error: ID not recognized”) om id inte existerar i databasen.
+
+List<String> getRecordsIDs()
+    Läser av databasen och returnerar alla IDn som finns i databasen.
+
+void deleteRecord(String id) throws SQLException
+    Tar emot ett ID och tar bort motsvarande record ur databasen.
+
+    • Alla tidigare funktioner i applikationen skall nu utgå från databasen istället för arbetsminnet.
+
+    • En ny löprunda skall läggas till automatiskt i databasen.
+
+    • Detaljerna för en löprunda skall nu läsas av via databasen.
+
+    • Det skall gå att läsa av detaljerna, samt ta bort en löprunda genom att ange dess ID.
+
+    • Det skall gå att filtrera löprundor baserat på deras distans.
+        o Om ingen match finns skall ett felmeddelande skrivas ut.
+
+För Väl Godkänt betyg ovan utvecklas enligt principerna för test-driven utveckling TDD, testerna skall
+var gröna och gå igenom med en kodtäckning på så nära 100% som möjligt. Kodtäckning skall
+beräknas med JaCoCo Detta skall göras enskilt.
 
 
+Dagens ToDo(10/01/21):
+1. Refaktorera om allt instanserande av objekt till en @BeforeAll eller @BeforeEach
+    Började i UserTest och skapade en @BeforeEach där jag deklarerade en User och tilldelade den värden. testen blev röda.
+    Flyttade ut deklarationen av User klassen till innan metoden och tilldelade den sitt värde i metoden setupUser(). testen är gröna igen.
+
+    Fortsätter i ActivityTest. Skapar en @BeforeEach med en metod som jag döper till setupActivities(). Flyttar upp alla olika konstruktorer till setupActivities. Testen blir röda.
+    Deklarerar alla aktiviteter i klassen istället. Alla test gröna.
+    Tar bort dom gamla konstruktorerna från varje enskilt test. Testen är röda pga att testen inte är länkade till rätt konstruktorer.
+    Kollar att jag inte har dubbletter i konstruktorerna och försöker använda mig av så få som möjligt. Test är gröna.
+    Döper om mina activities till mer specifika namn är bara numrerade.
+
+    Byter över till ActivityManagerTest och skapar en @BeforeEach som jag döper till setupActivityManager().
+    Flyttar upp alla mina instanseringar till min setupActivityManager.
+    Börjar med min ActivityManager klass. Test röda. Flyttar ut deklarationen till klassen. Test gröna
+
+
+2. Kolla att allt fortfarande fungerar.
+3. Ändra i ActivityManagerTest för att börja implementera databas.
