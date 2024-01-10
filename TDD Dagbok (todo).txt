@@ -248,6 +248,7 @@ beräknas med JaCoCo Detta skall göras enskilt.
 
 Dagens ToDo(10/01/21):
 1. Refaktorera om allt instanserande av objekt till en @BeforeAll eller @BeforeEach
+
     Började i UserTest och skapade en @BeforeEach där jag deklarerade en User och tilldelade den värden. testen blev röda.
     Flyttade ut deklarationen av User klassen till innan metoden och tilldelade den sitt värde i metoden setupUser(). testen är gröna igen.
 
@@ -260,7 +261,8 @@ Dagens ToDo(10/01/21):
     Byter över till ActivityManagerTest och skapar en @BeforeEach som jag döper till setupActivityManager().
     Flyttar upp alla mina instanseringar till min setupActivityManager.
     Börjar med min ActivityManager klass. Test röda. Flyttar ut deklarationen till klassen. Test gröna
+    Fick fler röda test som hade att göra med Id på aktiviteterna. Genom att inte autogenerera Id i min setup så löste det problemen som hade uppstått. Alla test gröna igen.
 
 
-2. Kolla att allt fortfarande fungerar.
-3. Ändra i ActivityManagerTest för att börja implementera databas.
+
+2. Ändra i ActivityManagerTest för att börja implementera databas.
