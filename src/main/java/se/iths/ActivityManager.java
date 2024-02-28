@@ -1,12 +1,16 @@
 package se.iths;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
 
 public class ActivityManager {
     Map<String, Activity> activities;
+    DatabaseAPI api;
     public long idCounter = 1;
 
     public ActivityManager() {
+        activities = new HashMap<>();
+    }
+    public ActivityManager(DatabaseAPI api) {
+        this.api = api;
         activities = new HashMap<>();
     }
 
@@ -19,6 +23,10 @@ public class ActivityManager {
 
     public Activity getActivity(String id) {
         return activities.get(id);
+    }
+
+    public List<String> getIDs() {
+        return api.getRecordIDs();
     }
     
     public double totalDistance() {

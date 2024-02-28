@@ -2,7 +2,9 @@ package se.iths;
 
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.GregorianCalendar;
+import org.mockito.*;
+import static org.mockito.Mockito.*;
+import java.util.*;
 
 public class ActivityManagerTest {
     
@@ -10,16 +12,31 @@ public class ActivityManagerTest {
     Activity shortDistanceActivity;
     Activity longDistanceActivity;
     Activity sameIdActivity;
+    
+    @Mock
+    DatabaseAPI api;
 
     @BeforeEach
     public void setupActivityManager() {
-        activityManager = new ActivityManager();
+        api = Mockito.mock(DatabaseAPI.class);
+        activityManager = new ActivityManager(api);
         shortDistanceActivity = new Activity("1", 1, 60, new GregorianCalendar(2024, 1, 1));
         longDistanceActivity = new Activity("2", 4, 60, new GregorianCalendar(2024, 1, 1));
         sameIdActivity = new Activity("1", 1, 1, 0, 0, new GregorianCalendar(2024, 0, 1));
        
         activityManager.addActivity(shortDistanceActivity);
         activityManager.addActivity(longDistanceActivity);
+    }
+
+    @Test
+    public void canGetActivityIDsFromDatabase() {
+        List<String> activities = new ArrayList<>();
+        activities.add("1");
+        activities.add("2");
+        
+        when(api.getRecordIDs()).thenReturn(activities);
+
+        assertEquals(2, activityManager.getIDs().size());
     }
     
     @Test

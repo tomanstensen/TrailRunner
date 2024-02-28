@@ -264,5 +264,4 @@ Dagens ToDo(10/01/21):
     Fick fler röda test som hade att göra med Id på aktiviteterna. Genom att inte autogenerera Id i min setup så löste det problemen som hade uppstått. Alla test gröna igen.
 
 
-
 2. Ändra i ActivityManagerTest för att börja implementera databas.
